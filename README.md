@@ -16,7 +16,7 @@ This script automates the installation of the following software:
 - Git
 - Python
 
-### Functioning
+### Functionality
 
 1. The script checks for an internet connection and exits if there is no internet connection.
 2. The script updates the package index, upgrades system packages, and installs Linux build essential and headers.
