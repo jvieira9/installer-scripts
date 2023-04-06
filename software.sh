@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
-# Softwares: Docker, Google Chrome, Visual Studio Code, Git, Python.
+# Softwares: Docker, Google Chrome, Visual Studio Code, VLC, Git, Python.
 
 # This enables the script to exit immediately if any command fails
 set -euo pipefail
