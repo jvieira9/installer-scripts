@@ -30,7 +30,7 @@ read -p " Do you want to proceed? (Y/n)" install_extensions
 if [[ "$install_extensions" == [yY] || "$install_extensions" == "" ]]; then
     read -p "Do you want to install the Python extension? (Y/n)" install_vscextpython
     if [[ "$install_vscextpython" == [yY] || "$install_vscextpython" == "" ]]; then
-        if ! code --list-extensions | grep -q "ms-python.python"; then
+        if ! code --list-extensions | grep -q "ms-python.python"; then 
             printf "Installing the Python extension...\n"
             code --install-extension ms-python.python >/dev/null 2>&1
             printf "The extension was succesfully installed.\n"

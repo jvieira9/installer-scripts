@@ -32,7 +32,7 @@ if [[ "$install_docker" == [yY] || "$install_docker" == "" ]]; then
         printf "Docker is already installed.\n"
     fi
 else
-    printf "Skipping Docker installation.\n"
+    printf "Skipping Docker installation.\n" 
 fi
 
 # Download the latest version of Google Chrome for Ubuntu and install it using dpkg package manager

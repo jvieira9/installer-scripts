@@ -30,7 +30,7 @@ This script automates the installation of the following Visual Studio Code exten
 - Python
 - Shellman
 - Docker
-- Intellicode
+- Intellicode 
 
 ### Functionality
 
