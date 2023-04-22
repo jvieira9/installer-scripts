@@ -8,7 +8,7 @@ set -euo pipefail
 
 # Internet connection check
 
-if ! ping -c 4 google.com &> /dev/null && ! ping -c 4 microsoft.com &> /dev/null; then
+if ! ping -c 4 google.com >/dev/null 2>&1 && ! ping -c 4 microsoft.com >/dev/null 2>&1; then
     printf "No internet connection. The script cannot be executed.\n"
     exit 1
 else
