@@ -26,9 +26,9 @@ fi
 printf "This script will install the following VS Code extensions: Python, Shellman, Docker, Intellicode."
 
 # Install VS Code extensions
-read -p " Do you want to proceed? (Y/n)" install_extensions
+read -p " Do you want to proceed? [Y/n]" install_extensions
 if [[ "$install_extensions" == [yY] || "$install_extensions" == "" ]]; then
-    read -p "Do you want to install the Python extension? (Y/n)" install_vscextpython
+    read -p "Do you want to install the Python extension? [Y/n]" install_vscextpython
     if [[ "$install_vscextpython" == [yY] || "$install_vscextpython" == "" ]]; then
         if ! code --list-extensions | grep -q "ms-python.python"; then 
             printf "Installing the Python extension...\n"
@@ -41,7 +41,7 @@ if [[ "$install_extensions" == [yY] || "$install_extensions" == "" ]]; then
         printf "Skipping the Python extension installation.\n"
     fi
 
-    read -p "Do you want to install the Docker extension? (Y/n)" install_vscextdocker
+    read -p "Do you want to install the Docker extension? [Y/n]" install_vscextdocker
     if [[ "$install_vscextdocker" == [yY] || "$install_vscextdocker" == "" ]]; then
         if ! code --list-extensions | grep -q "ms-azuretools.vscode-docker"; then
             printf "Installing the Docker extension...\n"
@@ -54,7 +54,7 @@ if [[ "$install_extensions" == [yY] || "$install_extensions" == "" ]]; then
         printf "Skipping the Docker extension installation.\n"
     fi
 
-    read -p "Do you want to install the IntelliCode extension? (Y/n)" install_vscextintellicode
+    read -p "Do you want to install the IntelliCode extension? [Y/n]" install_vscextintellicode
     if [[ "$install_vscextintellicode" == [yY] || "$install_vscextintellicode" == "" ]]; then
         if ! code --list-extensions | grep -q "VisualStudioExptTeam.vscodeintellicode"; then
             printf "Installing the IntelliCode extension...\n"
@@ -67,7 +67,7 @@ if [[ "$install_extensions" == [yY] || "$install_extensions" == "" ]]; then
         printf "Skipping the IntelliCode extension installation.\n"
     fi
 
-    read -p "Do you want to install the shellman extension? (Y/n)" install_vscextshellman
+    read -p "Do you want to install the shellman extension? [Y/n]" install_vscextshellman
     if [[ "$install_vscextshellman" == [yY] || "$install_vscextshellman" == "" ]]; then
         if ! code --list-extensions | grep -q "Remisa.shellman"; then
             printf "Installing the shellman extension...\n"
