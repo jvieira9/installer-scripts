@@ -75,6 +75,7 @@ for opt in "${selected[@]}"; do
             sudo chmod 666 /var/run/docker.sock >> installer-script.log 2>&1
             printf "Docker installed successfully.\n"
         else
+            printf " \n"
             printf "Docker is already installed.\n"
         fi
       ;;
@@ -130,4 +131,6 @@ if [[ "$log" == [yY] || "$log" == "" ]]; then
 fi
 
 # Installation Complete
+
+printf " \n"
 printf "Installation complete!\n"
