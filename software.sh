@@ -2,7 +2,7 @@
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
 # Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq.
-# Possible future update: Functions and variables.
+# Possible future update: Functions and variables | --help -all --update
 
 # Remove log files from previous executions of the script
 rm install.log >/dev/null 2>&1
