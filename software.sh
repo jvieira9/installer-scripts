@@ -38,7 +38,9 @@ printf "Packages updated succesfully.\n"
 printf " \n"
 
 # Print the list of software that can be installed
-printf "Please type in the digits that correspond to the software you want to install. Select 'None' to exit.\n"
+printf "Type the digit that corresponds to the software you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
+printf "Select 'None' to exit without installing any software.\n"
+printf " \n"
 options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Finished" "None")
 selected=()
 
