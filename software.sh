@@ -26,90 +26,104 @@ rm installer-script.log
 touch installer-script.log
 
 # Update the package index, upgrade the system packages to their latest versions and refresh snap packages
-apt update >> installer-script.log 2>&1 && apt-get upgrade -y >> installer-script.log 2>&1
-snap refresh >> installer-script.log 2>&1
+clear
+printf "Updating packages...\n"
+# sudo apt update >> installer-script.log 2>&1 && sudo apt-get upgrade -y >> installer-script.log 2>&1
+# sudo snap refresh >> installer-script.log 2>&1
+printf "Packages updated succesfully.\n"
+printf " \n"
 
-# Install Docker
-read -p "Do you want to install Docker? [Y/n]" install_docker
-if [[ "$install_docker" == [yY] || "$install_docker" == "" ]]; then
-    if ! command -v docker >> installer-script.log 2>&1
-    then
-        printf "Installing Docker...\n"
-        apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin >> installer-script.log 2>&1
-        groupadd docker >> installer-script.log 2>&1
-        usermod -aG docker $USER >> installer-script.log 2>&1
-        newgrp docker >> installer-script.log 2>&1
-        chmod 666 /var/run/docker.sock >> installer-script.log 2>&1
-        printf "Docker installed successfully.\n"
-    else
-        printf "Docker is already installed.\n"
-    fi
-else
-    printf "Skipping Docker installation.\n" 
-fi
+printf "Please type in the digits that corresponds to the software you want to install.\n"
 
-# Download the latest version of Google Chrome for Ubuntu and install it using dpkg package manager
-read -p "Do you want to install Google Chrome? [Y/n]" install_chrome
-if [[ "$install_chrome" == [yY] || "$install_chrome" == "" ]]; then
-    if ! dpkg -l google-chrome-stable >> installer-script.log 2>&1
-    then
-        printf "Installing Google Chrome...\n"
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
-        dpkg -i google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
-        rm google-chrome-stable_current_amd64.deb
-        printf "Google Chrome installed successfully.\n"
-    else
-        printf "Google Chrome is already installed.\n"
-    fi
-else
-    printf "Skipping Google Chrome installation.\n"
-fi
+options=("Docker" "Google Chrome" "Visual Studio Code" "Git" "Python" "Finished")
+selected=()
 
-# Install Visual Studio Code using snap package manager
-read -p "Do you want to install Visual Studio Code? [Y/n]" install_vscode
-if [[ "$install_vscode" == [yY] || "$install_vscode" == "" ]]; then
-    if ! command -v code >> installer-script.log 2>&1
-    then
-        printf "Installing Visual Studio Code...\n"
-        snap install code --classic >> installer-script.log 2>&1
-        printf "Visual Studio Code installed successfully.\n"
-    else
-        printf "Visual Studio Code is already installed.\n"
-    fi
-else
-    printf "Skipping Visual Studio Code installation.\n"
-fi
+# loop until the user is done selecting options
+while true; do
+  select opt in "${options[@]}"; do
+    case $opt in
+      "Finished")
+        if [ ${#selected[@]} -eq 0 ]; then
+          printf "Please select at least one option.\n"
+        else
+          break 2
+        fi
+        ;;
+      *)
+        if [[ " ${selected[@]} " =~ " ${opt} " ]]; then
+          printf "%s is already selected.\n" "$opt"
+        else
+          selected+=("$opt")
+          printf "%s selected.\n" "$opt"
+        fi
+        ;;
+    esac
+  done
+done
 
-# Install Git
-read -p "Do you want to install Git? [Y/n]" install_git
-if [[ "$install_git" == [yY] || "$install_git" == "" ]]; then
-    if ! command -v git >> installer-script.log 2>&1
-    then
-        printf "Installing Git...\n"
-        apt install git -y >> installer-script.log 2>&1
-        printf "Git installed successfully.\n"
-    else
-        printf "Git is already installed.\n"
-    fi
-else
-    printf "Skipping Git installation.\n"
-fi
-
-# Install Python
-read -p "Do you want to install Python? [Y/n]" install_python
-if [[ "$install_python" == [yY] || "$install_python" == "" ]]; then
-    if ! command -v python3 >> installer-script.log 2>&1
-    then
-        printf "Installing Python...\n"
-        apt install python3 python3-pip -y >> installer-script.log 2>&1
-    else
-        printf "Python is already installed.\n"
-    fi
-else
-    printf "Skipping Python installation.\n"
-fi
+# install the selected packages
+for opt in "${selected[@]}"; do
+  case $opt in
+    "Docker")
+        if ! command -v docker >> installer-script.log 2>&1
+        then
+            printf "Installing Docker...\n"
+            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin >> installer-script.log 2>&1
+            sudo groupadd docker >> installer-script.log 2>&1
+            sudo usermod -aG docker $USER >> installer-script.log 2>&1
+            newgrp docker >> installer-script.log 2>&1
+            sudo chmod 666 /var/run/docker.sock >> installer-script.log 2>&1
+            printf "Docker installed successfully.\n"
+        else
+            printf "Docker is already installed.\n"
+        fi
+      ;;
+    "Google Chrome")
+        if ! dpkg -l google-chrome-stable >> installer-script.log 2>&1
+        then
+            printf "Installing Google Chrome...\n"
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
+            sudo dpkg -i google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
+            rm google-chrome-stable_current_amd64.deb
+            printf "Google Chrome installed successfully.\n"
+        else
+            printf "Google Chrome is already installed.\n"
+        fi
+      ;;
+    "Visual Studio Code")
+        if ! command -v code >> installer-script.log 2>&1
+        then
+            printf "Installing Visual Studio Code...\n"
+            sudo snap install code --classic >> installer-script.log 2>&1
+            printf "Visual Studio Code installed successfully.\n"
+        else
+            printf "Visual Studio Code is already installed.\n"
+        fi
+      ;;
+    "Git")
+        if ! command -v git >> installer-script.log 2>&1
+        then
+            printf "Installing Git...\n"
+            sudo apt install git -y >> installer-script.log 2>&1
+            printf "Git installed successfully.\n"
+        else
+            printf "Git is already installed.\n"
+        fi
+      ;;
+    "Python")
+        if ! command -v python3 >> installer-script.log 2>&1
+        then
+            printf "Installing Python...\n"
+            sudo apt install python3 python3-pip -y >> installer-script.log 2>&1
+        else
+            printf "Python is already installed.\n"
+        fi
+  esac
+done
 
 # Log file
+
+printf " \n"
 read -p "Would you like to delete the 'installer-script.log' file that recorded the output of all executed commands? [Y/n]" log
 if [[ "$log" == [yY] || "$log" == "" ]]; then
         rm installer-script.log
