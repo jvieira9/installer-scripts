@@ -8,7 +8,7 @@ This repository contains two Bash scripts designed to automate software and exte
 
 ### Script 1 - software.sh
 
-This script automates the installation of the following software:
+This script has the possibility of installing the following software:
 
 - Google Chrome
 - Visual Studio Code
@@ -19,6 +19,10 @@ This script automates the installation of the following software:
 - VirtualBox
 - VLC
 - Notepadqq
+- Discord
+- KeePass2
+- Spotify
+- GIMP
 
 ### Functionality
 
@@ -31,7 +35,7 @@ This script automates the installation of the following software:
 
 ### Script 2 - extensions.sh
 
-This script automates the installation of the following Visual Studio Code extensions:
+This script has the possibility of installing the following extensions:
 
 - Python
 - Shellman

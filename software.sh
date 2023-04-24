@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
-# Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq.
+# Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq, Discord, KeePass2, Spotify, GIMP.
 # Possible future update: Functions and variables | --help -all --update
 
 # Remove log files from previous executions of the script
@@ -261,6 +261,9 @@ for opt in "${selected[@]}"; do
     ;;
   esac
 done
+
+# Removing packages that were installed as dependencies but are no longer required by any other installed packages.
+sudo apt autoremove
 
 # Log files
 printf " \n"
