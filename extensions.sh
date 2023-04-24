@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of Visual Studio Code extensions on an Ubuntu-based system.
-# VS Code Extensions: Python, Shellman, Docker, Intellicode.
+# VS Code Extensions: Python, Shellman, Docker, Intellicode, Node.js extension pack.
 
 # Remove log files from previous executions of the script
 rm extensions-install.log >/dev/null 2>&1
@@ -33,7 +33,7 @@ fi
 printf "Type the digit that corresponds to the extension you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
 printf "Select 'None' to exit without installing any software.\n"
 printf " \n"
-options=("Python" "Shellman" "Docker" "IntelliCode" "Finished" "None")
+options=("Python" "Shellman" "Docker" "IntelliCode" "Node.js extension pack" "Finished" "None")
 selected=()
 
 # Loop until the user is done selecting options
@@ -113,6 +113,17 @@ for opt in "${selected[@]}"; do
             printf "The Shellman extension was succesfully installed.\n"
         else
             printf "The Shellman extension is already installed.\n"
+        fi
+    ;;
+
+    "Node.js extension pack")
+        # Check if Node.js extension pack is already installed. If not, install it.
+        if ! code --list-extensions | grep -q "waderyan.nodejs-extension-pack"; then
+            printf "Installing the Node.js extension pack...\n"
+            code --install-extension waderyan.nodejs-extension-pack >> extensions-install.log 2> extensions-error.log
+            printf "The Node.js extension pack was succesfully installed.\n"
+        else
+            printf "The Node.js extension pack is already installed.\n"
         fi
     ;;
   esac

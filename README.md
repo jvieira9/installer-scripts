@@ -1,6 +1,6 @@
 # Installer Scripts
 
-This repository contains two bash scripts designed to automate some installation processes. The scripts are recommended for use by developers.
+This repository contains two bash scripts designed to automate some installation processes. The scripts are recommended to be used by developers.
 
 ## Author
 
@@ -10,18 +10,24 @@ This repository contains two bash scripts designed to automate some installation
 
 This script automates the installation of the following software:
 
-- Docker
 - Google Chrome
 - Visual Studio Code
 - Git
+- Docker
 - Python
+- Node.js
+- VirtualBox
+- VLC
+- Notepadqq
 
 ### Functionality
 
-1. The script checks for an internet connection and exits if there is no internet connection.
-2. The script updates the package index, upgrades system packages, and installs Linux build essential and headers.
-3. The script prompts the user to choose which software packages to install. If the user chooses to install a package, the script installs it using the appropriate package manager. If the package is already installed, the script skips the installation process.
-4. The script updates the package index and upgrades system packages again, and prints "Installation complete!" to indicate that the installation process is finished.
+1. The script creates two log files. A file named `install.log` that will register all the commands executed by the script and a file named `error.log` that will register every error that occurs while executing the script.
+2. The script checks for an internet connection and exits if there is no internet connection.
+3. The script checks if the user running the script is root or has sudo privileges and exits if it isn't.
+4. The script updates the package index, upgrades system packages and refreshes snap packages.
+5. The script prompts the user to choose which software to install. If the user chooses to install a software, the script installs it. If the package is already installed, the script says so.
+6. The script prompts the user to choose if they want to delete the log files created by the script.
 
 ### Script 2 - extensions.sh
 
@@ -30,15 +36,16 @@ This script automates the installation of the following Visual Studio Code exten
 - Python
 - Shellman
 - Docker
-- Intellicode 
+- Intellicode
+- Node.js extension pack 
 
 ### Functionality
 
-1. The script checks for an internet connection and exits if there is no internet connection.
-2. The script checks if Visual Studio Code is installed and exits if it isn't.
-3. The script prompts the user to confirm if they want to proceed with the installation of the extensions. If the user confirms, the script proceeds to install each of the extensions, prompting the user for confirmation for each extension.
-4. If an extension is already installed, the script skips the installation of that extension.
-5. Once all the extensions have been installed or skipped, the script prints a message indicating the completion of the installation process.
+1. The script creates two log files. A file named `extensions-install.log` that will register all the commands executed by the script and a file named `extensions-error.log` that will register every error that occurs while executing the script.
+2. The script checks for an internet connection and exits if there is no internet connection.
+3. The script checks if the VS Code installed in the device and exits if it isn't.
+4. The script prompts the user to choose which extensions to install. If the user chooses to install a extension, the script installs it. If the package is already installed, the script says so.
+6. The script prompts the user to choose if they want to delete the log files created by the script.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
