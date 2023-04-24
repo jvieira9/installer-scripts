@@ -1,6 +1,6 @@
 # Installer Scripts
 
-This repository contains two bash scripts designed to automate some installation processes. The scripts are recommended to be used by developers.
+This repository contains two Bash scripts designed to automate software and extension installation processes for developers.
 
 ## Author
 
@@ -22,12 +22,12 @@ This script automates the installation of the following software:
 
 ### Functionality
 
-1. The script creates two log files. A file named `install.log` that will register all the commands executed by the script and a file named `error.log` that will register every error that occurs while executing the script.
-2. The script checks for an internet connection and exits if there is no internet connection.
-3. The script checks if the user running the script is root or has sudo privileges and exits if it isn't.
-4. The script updates the package index, upgrades system packages and refreshes snap packages.
-5. The script prompts the user to choose which software to install. If the user chooses to install a software, the script installs it. If the package is already installed, the script says so.
-6. The script prompts the user to choose if they want to delete the log files created by the script.
+1. The script creates two log files: `install.log` to register all the commands executed by the script and `error.log` to register any errors that occur while executing the script.
+2. The script checks for an internet connection and exits if there is none.
+3. The script checks if the user running the script has sudo privileges and exits if not.
+4. The script updates the package index, upgrades system packages, and refreshes snap packages.
+5. The script prompts the user to select which software to install. If the user selects a software that is already installed, the script notifies them.
+6. The script prompts the user to choose whether to delete the log files created by the script.
 
 ### Script 2 - extensions.sh
 
@@ -41,11 +41,11 @@ This script automates the installation of the following Visual Studio Code exten
 
 ### Functionality
 
-1. The script creates two log files. A file named `extensions-install.log` that will register all the commands executed by the script and a file named `extensions-error.log` that will register every error that occurs while executing the script.
-2. The script checks for an internet connection and exits if there is no internet connection.
-3. The script checks if the VS Code installed in the device and exits if it isn't.
-4. The script prompts the user to choose which extensions to install. If the user chooses to install a extension, the script installs it. If the package is already installed, the script says so.
-6. The script prompts the user to choose if they want to delete the log files created by the script.
+1. The script creates two log files: `extensions-install.log` to register all the commands executed by the script and `extensions-error.log` to register any errors that occur while executing the script.
+2. The script checks for an internet connection and exits if there is none.
+3. The script checks if Visual Studio Code is installed on the device and exits if not.
+4. The script prompts the user to select which extensions to install. If the user selects an extension that is already installed, the script notifies them.
+5. The script prompts the user to choose whether to delete the log files created by the script.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ To execute the scripts on a new machine, follow these steps:
 2. Navigate to the directory where the repository was cloned using the command:
 
     ```
-    cd <repository_name>
+    cd installer-scripts
     ```
 
 3. Modify the permissions of the scripts before executing them. To do this, run the following command: 
