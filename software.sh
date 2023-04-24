@@ -2,6 +2,7 @@
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
 # Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq.
+# Possible future update: Functions and variables.
 
 # Remove log files from previous executions of the script
 rm install.log >/dev/null 2>&1
@@ -41,7 +42,7 @@ printf " \n"
 printf "Type the digit that corresponds to the software you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
 printf "Select 'None' to exit without installing any software.\n"
 printf " \n"
-options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Finished" "None")
+options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Discord" "KeePass2" "Spotify" "GIMP" "Finished" "None")
 selected=()
 
 # Loop until the user is done selecting options
@@ -204,6 +205,58 @@ for opt in "${selected[@]}"; do
             printf "Notepadqq installed successfully.\n"
         else
             printf "Notepadqq is already installed.\n"
+        fi
+    ;;
+
+    "Discord")
+        # Check if Discord is already installed. If not, download and install it.
+        if ! command -v discord --version >> install.log 2> error.log
+        then
+            printf " \n"
+            printf "Installing Discord...\n"
+            sudo snap install discord >> install.log 2> error.log
+            printf "Discord installed successfully.\n"
+        else
+            printf "Discord is already installed.\n"
+        fi
+    ;;
+
+    "KeePass2")
+        # Check if KeePass2 is already installed. If not, download and install it.
+        if ! command -v keepass2 --version >> install.log 2> error.log
+        then
+            printf " \n"
+            printf "Installing KeePass2...\n"
+            sudo apt install keepass2 -y >> install.log 2> error.log
+            printf "KeePass2 installed successfully.\n"
+        else
+            printf "KeePass2 is already installed.\n"
+        fi
+    ;;
+
+    "Spotify")
+        # Check if Spotify is already installed. If not, download and install it.
+        if ! command -v spotify --version >> install.log 2> error.log
+        then
+            printf " \n"
+            printf "Installing Spotify...\n"
+            sudo snap install spotify >> install.log 2> error.log
+            printf "Spotify installed successfully.\n"
+        else
+            printf "Spotify is already installed.\n"
+        fi
+    ;;
+
+    "GIMP")
+        # Check if GIMP is already installed. If not, download and install it.
+        if ! command -v gimp --version >> install.log 2> error.log
+        then
+            printf " \n"
+            printf "Installing GIMP...\n"
+            sudo apt install gimp -y >> install.log 2> error.log
+            printf "GIMP installed successfully.\n"
+        else
+            printf "GIMP is already installed.\n"
         fi
     ;;
   esac
