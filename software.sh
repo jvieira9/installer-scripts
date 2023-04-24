@@ -1,12 +1,13 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
-# Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq. 
+# Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq.
 
 # Remove log files from previous executions of the script
-
 rm install.log >/dev/null 2>&1
 rm error.log >/dev/null 2>&1
+
+# Create a new install.log file and log the first message
 printf "This file registers every command executed by this script.\n" >> install.log
 
 # This enables the script to exit immediately if any command fails
@@ -31,25 +32,26 @@ fi
 # Update the package index, upgrade the system packages to their latest versions and refresh snap packages
 clear
 printf "Updating packages...\n"
-# sudo apt update >> install.log 2> error.log && sudo apt-get upgrade -y >> install.log 2> error.log
-# sudo snap refresh >> install.log 2> error.log
+sudo apt update >> install.log 2> error.log && sudo apt-get upgrade -y >> install.log 2> error.log
+sudo snap refresh >> install.log 2> error.log
 printf "Packages updated succesfully.\n"
 printf " \n"
 
+# Print the list of software that can be installed
 printf "Please type in the digits that correspond to the software you want to install. Select 'None' to exit.\n"
-
 options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Finished" "None")
 selected=()
 
-# loop until the user is done selecting options
+# Loop until the user is done selecting options
 while true; do
   select opt in "${options[@]}"; do
     case $opt in
       "Finished")
+        # Check if the user has selected any packages. If not, prompt the user to select at least one package.
         if [ ${#selected[@]} -eq 0 ]; then
           printf "Please select at least one option or 'None' to exit.\n"
         else
-          break 2
+          break 2 # Exit both loops and proceed to install the selected packages.
         fi
         ;;
       "None")
@@ -60,6 +62,7 @@ while true; do
         exit 0
         ;;
       *)
+        # Check if the user has already selected the package. If not, add it to the list of selected packages.
         if [[ " ${selected[@]} " =~ " ${opt} " ]]; then
           printf "%s is already selected.\n" "$opt"
         else
@@ -71,11 +74,11 @@ while true; do
   done
 done
 
-# install the selected packages
+# Install the selected packages
 for opt in "${selected[@]}"; do
   case $opt in
-
     "Google Chrome")
+        # Check if Google Chrome is already installed. If not, download and install it.
         if ! dpkg -l google-chrome-stable >> install.log 2> error.log
         then
             printf " \n"
@@ -92,6 +95,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Visual Studio Code")
+        # Check if Visual Studio Code is already installed. If not, install it using snap.
         if ! command -v code >> install.log 2> error.log
         then
             printf " \n"
@@ -105,6 +109,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Git")
+        # Check if Git is already installed. If not, download and install it.
         if ! command -v git >> install.log 2> error.log
         then
             printf " \n"
@@ -118,6 +123,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Docker")
+        # Check if Docker is already installed. If not, download and install it.
         if ! command -v docker >> install.log 2> error.log
         then
             printf " \n"
@@ -135,6 +141,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Python")
+        # Check if Python is already installed. If not, download and install it.
         if ! command -v python3 >> install.log 2> error.log
         then
             printf " \n"
@@ -146,6 +153,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Node.js")
+        # Check if Node.js is already installed. If not, download and install it.
         if ! command -v node -v >> install.log 2> error.log
         then
             printf " \n"
@@ -158,6 +166,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "VirtualBox")
+        # Check if VirtualBox is already installed. If not, download and install it.
         if ! command -v virtualbox --help >> install.log 2> error.log
         then
             printf " \n"
@@ -169,6 +178,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "VLC")
+        # Check if VLC is already installed. If not, download and install it.
         if ! command -v vlc --version >> install.log 2> error.log
         then
             printf " \n"
@@ -180,6 +190,7 @@ for opt in "${selected[@]}"; do
     ;;
 
     "Notepadqq")
+        # Check if Notepadqq is already installed. If not, download and install it.
         if ! command -v notepadqq >> install.log 2> error.log
         then
             printf " \n"
@@ -192,8 +203,7 @@ for opt in "${selected[@]}"; do
   esac
 done
 
-# Log file
-
+# Log files
 printf " \n"
 read -p "Would you like to delete the log files created by this script? [Y/n]" log
 if [[ "$log" == [yY] || "$log" == "" ]]; then
@@ -202,6 +212,5 @@ if [[ "$log" == [yY] || "$log" == "" ]]; then
 fi
 
 # Installation Complete
-
 printf " \n"
 printf "Installation complete!\n"
