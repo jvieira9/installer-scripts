@@ -149,6 +149,7 @@ for opt in "${selected[@]}"; do
             printf " \n"
             printf "Installing Python...\n"
             sudo apt install python3 python3-pip -y >> install.log 2> error.log
+            printf "Python installed successfully.\n"
         else
             printf "Python is already installed.\n"
         fi
@@ -160,8 +161,8 @@ for opt in "${selected[@]}"; do
         then
             printf " \n"
             printf "Installing Node.js...\n"
-            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - >> install.log 2> error.log
             sudo apt-get install -y nodejs >> install.log 2> error.log
+            printf "Node.js installed successfully.\n"
         else
             printf "Node.js is already installed.\n"
         fi
@@ -174,6 +175,7 @@ for opt in "${selected[@]}"; do
             printf " \n"
             printf "Installing VirtualBox...\n"
             sudo apt install virtualbox -y >> install.log 2> error.log
+            printf "VirtualBox installed successfully.\n"
         else
             printf "VirtualBox is already installed.\n"
         fi
@@ -186,6 +188,7 @@ for opt in "${selected[@]}"; do
             printf " \n"
             printf "Installing VLC...\n"
             sudo apt install vlc -y  >> install.log 2> error.log
+            printf "VLC installed successfully.\n"
         else
             printf "VLC is already installed.\n"
         fi
@@ -198,6 +201,7 @@ for opt in "${selected[@]}"; do
             printf " \n"
             printf "Installing Notepadqq...\n"
             sudo apt install notepadqq -y  >> install.log 2> error.log
+            printf "Notepadqq installed successfully.\n"
         else
             printf "Notepadqq is already installed.\n"
         fi
