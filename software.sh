@@ -2,7 +2,7 @@
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
 # Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq, Discord, KeePass2, Spotify, GIMP.
-# Possible future update: Functions and variables | --help -all --update
+# Possible future update: Functions and variables | --help -all --update | Remove a selected option
 
 # Remove log files from previous executions of the script
 rm install.log >/dev/null 2>&1
@@ -42,7 +42,7 @@ printf " \n"
 printf "Type the digit that corresponds to the software you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
 printf "Select 'None' to exit without installing any software.\n"
 printf " \n"
-options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Discord" "KeePass2" "Spotify" "GIMP" "Finished" "None")
+options=("None" "Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Discord" "KeePass2" "Spotify" "GIMP" "Finished")
 selected=()
 
 # Loop until the user is done selecting options
