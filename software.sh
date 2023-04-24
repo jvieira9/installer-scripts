@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of software on an Ubuntu-based system.
-# Softwares: Docker, Google Chrome, Visual Studio Code, Git, Python.
+# Softwares: Google Chrome, Visual Studio Code, Git, Docker, Python, Node.js, VirtualBox, VLC, Notepadqq. 
 
 # This enables the script to exit immediately if any command fails
 set -euo pipefail
@@ -33,9 +33,9 @@ printf "Updating packages...\n"
 printf "Packages updated succesfully.\n"
 printf " \n"
 
-printf "Please type in the digits that corresponds to the software you want to install. Select 'None' to exit.\n"
+printf "Please type in the digits that correspond to the software you want to install. Select 'None' to exit.\n"
 
-options=("Docker" "Google Chrome" "Visual Studio Code" "Git" "Python" "None" "Finished")
+options=("Google Chrome" "Visual Studio Code" "Git" "Docker" "Python" "Node.js" "VirtualBox" "VLC" "Notepadqq" "Finished" "None")
 selected=()
 
 # loop until the user is done selecting options
@@ -69,61 +69,129 @@ done
 # install the selected packages
 for opt in "${selected[@]}"; do
   case $opt in
+
+    "Google Chrome")
+        if ! dpkg -l google-chrome-stable >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing Google Chrome...\n"
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
+            sudo dpkg -i google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
+            printf " \n"
+            printf "Google Chrome installed successfully.\n"
+            rm google-chrome-stable_current_amd64.deb
+        else
+            printf " \n"
+            printf "Google Chrome is already installed.\n"
+        fi
+    ;;
+
+    "Visual Studio Code")
+        if ! command -v code >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing Visual Studio Code...\n"
+            sudo snap install code --classic >> installer-script.log 2>&1
+            printf " \n"
+            printf "Visual Studio Code installed successfully.\n"
+        else
+            printf " \n"
+            printf "Visual Studio Code is already installed.\n"
+        fi
+    ;;
+
+    "Git")
+        if ! command -v git >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing Git...\n"
+            sudo apt install git -y >> installer-script.log 2>&1
+            printf " \n"
+            printf "Git installed successfully.\n"
+        else
+            printf " \n"
+            printf "Git is already installed.\n"
+        fi
+    ;;
+
     "Docker")
         if ! command -v docker >> installer-script.log 2>&1
         then
+            printf " \n"
             printf "Installing Docker...\n"
             sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin >> installer-script.log 2>&1
             sudo groupadd docker >> installer-script.log 2>&1
             sudo usermod -aG docker $USER >> installer-script.log 2>&1
             newgrp docker >> installer-script.log 2>&1
             sudo chmod 666 /var/run/docker.sock >> installer-script.log 2>&1
+            printf " \n"
             printf "Docker installed successfully.\n"
         else
             printf " \n"
             printf "Docker is already installed.\n"
         fi
-      ;;
-    "Google Chrome")
-        if ! dpkg -l google-chrome-stable >> installer-script.log 2>&1
-        then
-            printf "Installing Google Chrome...\n"
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
-            sudo dpkg -i google-chrome-stable_current_amd64.deb >> installer-script.log 2>&1
-            rm google-chrome-stable_current_amd64.deb
-            printf "Google Chrome installed successfully.\n"
-        else
-            printf "Google Chrome is already installed.\n"
-        fi
-      ;;
-    "Visual Studio Code")
-        if ! command -v code >> installer-script.log 2>&1
-        then
-            printf "Installing Visual Studio Code...\n"
-            sudo snap install code --classic >> installer-script.log 2>&1
-            printf "Visual Studio Code installed successfully.\n"
-        else
-            printf "Visual Studio Code is already installed.\n"
-        fi
-      ;;
-    "Git")
-        if ! command -v git >> installer-script.log 2>&1
-        then
-            printf "Installing Git...\n"
-            sudo apt install git -y >> installer-script.log 2>&1
-            printf "Git installed successfully.\n"
-        else
-            printf "Git is already installed.\n"
-        fi
-      ;;
+    ;;
+
     "Python")
         if ! command -v python3 >> installer-script.log 2>&1
         then
+            printf " \n"
             printf "Installing Python...\n"
             sudo apt install python3 python3-pip -y >> installer-script.log 2>&1
         else
+            printf " \n"
             printf "Python is already installed.\n"
         fi
+    ;;
+
+    "Node.js")
+        if ! command -v node -v >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing Node.js...\n"
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - >> installer-script.log 2>&1
+            sudo apt-get install -y nodejs >> installer-script.log 2>&1
+        else
+            printf " \n"
+            printf "Node.js is already installed.\n"
+        fi
+    ;;
+
+    "VirtualBox")
+        if ! command -v virtualbox --help >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing VirtualBox...\n"
+            sudo apt install virtualbox -y >> installer-script.log 2>&1
+        else
+            printf " \n"
+            printf "VirtualBox is already installed.\n"
+        fi
+    ;;
+
+    "VLC")
+        if ! command -v vlc --version >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing VLC...\n"
+            sudo apt install vlc -y  >> installer-script.log 2>&1
+        else
+            printf " \n"
+            printf "VLC is already installed.\n"
+        fi
+    ;;
+
+    "Notepadqq")
+        if ! command -v notepadqq >> installer-script.log 2>&1
+        then
+            printf " \n"
+            printf "Installing Notepadqq...\n"
+            sudo apt install notepadqq -y  >> installer-script.log 2>&1
+        else
+            printf " \n"
+            printf "Notepadqq is already installed.\n"
+        fi
+    ;;
   esac
 done
 
