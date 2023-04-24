@@ -33,9 +33,9 @@ printf "Updating packages...\n"
 printf "Packages updated succesfully.\n"
 printf " \n"
 
-printf "Please type in the digits that corresponds to the software you want to install.\n"
+printf "Please type in the digits that corresponds to the software you want to install. Select 'None' to exit.\n"
 
-options=("Docker" "Google Chrome" "Visual Studio Code" "Git" "Python" "Finished")
+options=("Docker" "Google Chrome" "Visual Studio Code" "Git" "Python" "None" "Finished")
 selected=()
 
 # loop until the user is done selecting options
@@ -44,10 +44,15 @@ while true; do
     case $opt in
       "Finished")
         if [ ${#selected[@]} -eq 0 ]; then
-          printf "Please select at least one option.\n"
+          printf "Please select at least one option or 'None' to exit.\n"
         else
           break 2
         fi
+        ;;
+      "None")
+        printf " \n"
+        printf "Exiting without installing any software.\n"
+        exit 0
         ;;
       *)
         if [[ " ${selected[@]} " =~ " ${opt} " ]]; then
