@@ -1,8 +1,0 @@
-This file registers every command executed by this script.
-PING google.com (142.250.200.142) 56(84) bytes of data.
-64 bytes from mad41s14-in-f14.1e100.net (142.250.200.142): icmp_seq=1 ttl=58 time=39.8 ms
-64 bytes from mad41s14-in-f14.1e100.net (142.250.200.142): icmp_seq=2 ttl=58 time=36.9 ms
-
---- google.com ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss, time 1002ms
-rtt min/avg/max/mdev = 36.873/38.327/39.782/1.454 ms
