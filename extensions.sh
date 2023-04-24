@@ -33,7 +33,7 @@ fi
 printf "Type the digit that corresponds to the extension you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
 printf "Select 'None' to exit without installing any software.\n"
 printf " \n"
-options=("Python" "Shellman" "Docker" "IntelliCode" "Node.js extension pack" "Finished" "None")
+options=("None" "Python" "Shellman" "Docker" "IntelliCode" "Node.js extension pack" "Finished")
 selected=()
 
 # Loop until the user is done selecting options
