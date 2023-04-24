@@ -263,7 +263,7 @@ for opt in "${selected[@]}"; do
 done
 
 # Removing packages that were installed as dependencies but are no longer required by any other installed packages.
-sudo apt autoremove
+sudo apt autoremove -y >> install.log 2> error.log
 
 # Log files
 printf " \n"
