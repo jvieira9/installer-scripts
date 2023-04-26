@@ -90,7 +90,7 @@ To execute the scripts on a new machine, follow these steps:
 ## Notes
 
 - These scripts were designed to run on Ubuntu 22.04 but can run on most Debian-based Linux distributions, such as Linux Mint, Ubuntu, Debian, Xubuntu, and Lubuntu.
-- To execute these script, you need to have an internet connection.
+- To execute these scripts, you need to have an internet connection.
 - To execute the `software.sh`, you need to have sudo privileges.
 - To execute the `extensions.sh` script, you need Visual Studio Code installed on your computer.
 
