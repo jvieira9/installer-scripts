@@ -94,4 +94,19 @@ To execute the scripts on a new machine, follow these steps:
 - To execute the `software.sh`, you need to have sudo privileges.
 - To execute the `extensions.sh` script, you need Visual Studio Code installed on your computer.
 
+# Table of ANSI for colors
+
+| ANSI Escape Code | Description |
+| ------------- | ------------- |
+| \033[0m       | Resetar       |
+| \033[1m       | Negrito       |
+| \033[2m	    | Faint         |
+| \033[3m	    | Itálico       |
+| \033[4m	    | Sublinhado    |
+| \033[5m	    | Negrito       |
+| \033[7m	    | Invertido     |
+| \033[8m	    | Escondido     |
+| \033[9m	    | Riscado       |
+| \033[1m	    | Negrito       |
+
 #### If you encounter any issues while executing these scripts, please feel free to contact me at `joao.lopes.vieira115@gmail.com`.
