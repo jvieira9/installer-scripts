@@ -62,6 +62,10 @@ To execute the scripts on a new machine, follow these steps:
     ```
     git clone https://github.com/jvieira9/installer-scripts.git
     ```
+    or
+    ```
+    git clone git@github.com:jvieira9/installer-scripts.git
+    ```
 
 2. Navigate to the directory where the repository was cloned using the command:
 
