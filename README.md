@@ -1,6 +1,6 @@
 # Installer Scripts
 
-This repository contains two bash scripts designed to automate some installation processes. The scripts are recommended for use by developers.
+This repository contains two Bash scripts designed to automate software and extension installation processes for developers.
 
 ## Author
 
@@ -8,37 +8,48 @@ This repository contains two bash scripts designed to automate some installation
 
 ### Script 1 - software.sh
 
-This script automates the installation of the following software:
+This script has the possibility of installing the following software:
 
-- Docker
 - Google Chrome
 - Visual Studio Code
 - Git
+- Docker
 - Python
+- Node.js
+- VirtualBox
+- VLC
+- Notepadqq
+- Discord
+- KeePass2
+- Spotify
+- GIMP
 
 ### Functionality
 
-1. The script checks for an internet connection and exits if there is no internet connection.
-2. The script updates the package index, upgrades system packages, and installs Linux build essential and headers.
-3. The script prompts the user to choose which software packages to install. If the user chooses to install a package, the script installs it using the appropriate package manager. If the package is already installed, the script skips the installation process.
-4. The script updates the package index and upgrades system packages again, and prints "Installation complete!" to indicate that the installation process is finished.
+1. The script creates two log files: `install.log` to register all the commands executed by the script and `error.log` to register any errors that occur while executing the script.
+2. The script checks for an internet connection and exits if there is none.
+3. The script checks if the user running the script has sudo privileges and exits if not.
+4. The script updates the package index, upgrades system packages, and refreshes snap packages.
+5. The script prompts the user to select which software to install. If the user selects a software that is already installed, the script notifies them.
+6. The script prompts the user to choose whether to delete the log files created by the script.
 
 ### Script 2 - extensions.sh
 
-This script automates the installation of the following Visual Studio Code extensions:
+This script has the possibility of installing the following extensions:
 
 - Python
 - Shellman
 - Docker
-- Intellicode 
+- Intellicode
+- Node.js extension pack 
 
 ### Functionality
 
-1. The script checks for an internet connection and exits if there is no internet connection.
-2. The script checks if Visual Studio Code is installed and exits if it isn't.
-3. The script prompts the user to confirm if they want to proceed with the installation of the extensions. If the user confirms, the script proceeds to install each of the extensions, prompting the user for confirmation for each extension.
-4. If an extension is already installed, the script skips the installation of that extension.
-5. Once all the extensions have been installed or skipped, the script prints a message indicating the completion of the installation process.
+1. The script creates two log files: `extensions-install.log` to register all the commands executed by the script and `extensions-error.log` to register any errors that occur while executing the script.
+2. The script checks for an internet connection and exits if there is none.
+3. The script checks if Visual Studio Code is installed on the device and exits if not.
+4. The script prompts the user to select which extensions to install. If the user selects an extension that is already installed, the script notifies them.
+5. The script prompts the user to choose whether to delete the log files created by the script.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +66,7 @@ To execute the scripts on a new machine, follow these steps:
 2. Navigate to the directory where the repository was cloned using the command:
 
     ```
-    cd <repository_name>
+    cd installer-scripts
     ```
 
 3. Modify the permissions of the scripts before executing them. To do this, run the following command: 
@@ -79,6 +90,25 @@ To execute the scripts on a new machine, follow these steps:
 ## Notes
 
 - These scripts were designed to run on Ubuntu 22.04 but can run on most Debian-based Linux distributions, such as Linux Mint, Ubuntu, Debian, Xubuntu, and Lubuntu.
+- To execute these script, you need to have an internet connection.
+- To execute the `software.sh`, you need to have sudo privileges.
 - To execute the `extensions.sh` script, you need Visual Studio Code installed on your computer.
 
+# Table of ANSI for colors
+
+| ANSI Escape Code | Description |
+| ------------- | ------------- |
+| \033[0m       | Resetar       |
+| \033[1m       | Negrito       |
+| \033[2m	    | Faint         |
+| \033[3m	    | Itálico       |
+| \033[4m	    | Sublinhado    |
+| \033[5m	    | Negrito       |
+| \033[7m	    | Invertido     |
+| \033[8m	    | Escondido     |
+| \033[9m	    | Riscado       |
+| \033[1m	    | Negrito       |
+
 #### If you encounter any issues while executing these scripts, please feel free to contact me at `joao.lopes.vieira115@gmail.com`.
+
+
