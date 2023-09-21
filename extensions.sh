@@ -126,6 +126,17 @@ for opt in "${selected[@]}"; do
             printf "The Node.js extension pack is already installed.\n"
         fi
     ;;
+
+        "VS Code Great Icons")
+        # Check if VS Code Great Icons is already installed. If not, install it.
+        if ! code --list-extensions | grep -q "emmanuelbeziat.vscode-great-icons"; then
+            printf "Installing the VS Code Great Icons...\n"
+            code --install-extension emmanuelbeziat.vscode-great-icons >> extensions-install.log 2> extensions-error.log
+            printf "The VS Code Great Icons was succesfully installed.\n"
+        else
+            printf "The VS Code Great Icons is already installed.\n"
+        fi
+    ;;
   esac
 done
 
