@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2023 - By: João Vieira | 'jvieira9' on GitHub
 # This script automates the installation of Visual Studio Code extensions on an Ubuntu-based system.
-# VS Code Extensions: Python, Shellman, Docker, Intellicode, Node.js extension pack.
+# VS Code Extensions: Python, Shellman, Docker, Intellicode, Node.js extension pack, VS Code Great Icons, GitHub Copilot.
 
 # Remove log files from previous executions of the script
 rm extensions-install.log >/dev/null 2>&1
@@ -33,7 +33,7 @@ fi
 printf "Type the digit that corresponds to the extension you wish to install and press 'Enter', afterwards select the option 'Finished' to proceed with the installation.\n" 
 printf "Select 'None' to exit without installing any software.\n"
 printf " \n"
-options=("None" "Python" "Shellman" "Docker" "IntelliCode" "Node.js extension pack" "VS Code Great Icons" "Finished")
+options=("None" "Python" "Shellman" "Docker" "IntelliCode" "Node.js extension pack" "VS Code Great Icons" "GitHub Copilot" "Finished")
 selected=()
 
 # Loop until the user is done selecting options
@@ -137,7 +137,16 @@ for opt in "${selected[@]}"; do
             printf "The VS Code Great Icons is already installed.\n"
         fi
     ;;
-  esac
+        "GitHub Copilot")
+        # Check if VS Code Great Icons is already installed. If not, install it.
+        if ! code --list-extensions | grep -q "GitHub.copilot"; then
+            printf "Installing the GitHub Copilot...\n"
+            code --install-extension GitHub.copilot >> extensions-install.log 2> extensions-error.log
+            printf "The GitHub Copilot was succesfully installed.\n"
+        else
+            printf "The GitHub Copilot is already installed.\n"
+        fi
+    esac
 done
 
 # Log files
